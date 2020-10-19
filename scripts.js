@@ -1,6 +1,6 @@
 
 // Hide uppercase keyboard when page loads
-$('document').ready(function () {  // could also use $('body').ready()
+$('body').ready(function () {  // could also use $('body').ready()
     $('#keyboard-upper-container').hide();
 });
 
@@ -24,12 +24,12 @@ $('body').keyup(function (e) {
 
 
 // When keys are pressed, they should be highlighted in the browser
-$(document).keypress(function(e) {
+$('body').keypress(function(e) {
     //highlight pressed key
     let key = $('#' + e.which);  // <= what?
     $(key).css('background-color', 'yellow');
 
-    $(document).keyup(function(e) {
+    $('body').keyup(function(e) {
       //unhighlight released key
       $(key).css('background-color', '');
     });
@@ -53,22 +53,23 @@ let sentences = [
 let sentenceIdx = 0;
 let letterIdx = 0;
 
-    $('#sentence').text(sentences[sentenceIdx]);
+$('#sentence').text(sentences[sentenceIdx]);
 
     
 
 //  Highlight the currently expected letter in the on-screen sentence that should be typed next
     // move the #yellow-block along the letterIdx
+// if (letterIdx < sentences.length) {} ??
 
 
-
+//Also display the currently expected letter in the center (div id="target-letter" provided for you)
+$('#target-letter').css('margin', 'auto');
 
 
 
 
 
 /*
-
 //HINTS
 
 (split(' ').length)
@@ -96,7 +97,6 @@ $('body').keypress(function (e) {
 });
 
 
-// HELPFUL
 const sentences = [
     'The dog is named Odin',
     'My dog is nicknamed Odie',
